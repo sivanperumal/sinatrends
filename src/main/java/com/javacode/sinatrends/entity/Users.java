@@ -42,6 +42,7 @@ public class Users {
 	private LocalDate createdDate;
 	@Column(name="updated_date")
 	private LocalDate updatedDate;
+	
 	@Column(name="created_by", updatable = false)
 	private LocalTime createdBy;
 	@Column(name="updated_by")

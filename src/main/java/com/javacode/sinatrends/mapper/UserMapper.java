@@ -46,6 +46,8 @@ public class UserMapper {
 			UserAddressDto dtoAddress = userAddressMapper.toAddressDto(address);
 			return dtoAddress;
 		}).collect(Collectors.toList());
+		
+		
 		Dto.setAddress(userAddressDto);
 	    Dto.setCreatedDate(user.getCreatedDate());
 	    Dto.setCreatedBy(user.getCreatedBy());

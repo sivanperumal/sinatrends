@@ -7,6 +7,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -34,7 +35,7 @@ public class SecurityConfig {
 				 .requestMatchers("/auth/refresh").permitAll()
 				 .anyRequest().authenticated();
 		    })
-			.cors(cors->{})
+			.cors(Customizer.withDefaults())
 			.csrf(csrf->csrf.disable())
 			.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 	   return http.build();
