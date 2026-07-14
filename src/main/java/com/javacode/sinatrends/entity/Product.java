@@ -35,6 +35,8 @@ public class Product {
 	
 	private Double salePrice;
 	
+	private Integer offer;
+	
 	private Double rating = 0.0;
 
     private Integer totalReviews = 0;
@@ -44,6 +46,8 @@ public class Product {
     private Boolean featured = false;
 
     private Boolean bestSeller = false;
+    
+    private Integer stock;
     
     @Enumerated(EnumType.STRING)
     private ProductType productType;
@@ -95,8 +99,8 @@ public class Product {
 //			ProductType productType, Category category, List<ProductImage> images, List<ProductVariant> variants,
 //			List<ProductReview> reviews, LocalDateTime createdAt,LocalDateTime updatedAt) {
 	public Product(Long id, String name, String slug, String shortDescription, String description, Double basePrice,
-				Double salePrice, Double rating, Integer totalReviews, Boolean active, Boolean featured, Boolean bestSeller,
-				ProductType productType, Category category, List<String> images,LocalDateTime createdAt,LocalDateTime updatedAt) {
+				Double salePrice,Integer offer, Double rating, Integer totalReviews, Boolean active, Boolean featured, Boolean bestSeller,
+				Integer stock, ProductType productType, Category category, List<String> images,LocalDateTime createdAt,LocalDateTime updatedAt) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -105,11 +109,13 @@ public class Product {
 		this.description = description;
 		this.basePrice = basePrice;
 		this.salePrice = salePrice;
+		this.offer = offer;
 		this.rating = rating;
 		this.totalReviews = totalReviews;
 		this.active = active;
 		this.featured = featured;
 		this.bestSeller = bestSeller;
+		this.stock = stock;
 		this.productType = productType;
 		this.category = category;
 		this.images = images.stream().map(url -> new ProductImage(url,this)).collect(Collectors.toList());
@@ -172,6 +178,14 @@ public class Product {
 	public void setSalePrice(Double salePrice) {
 		this.salePrice = salePrice;
 	}
+	
+	public Integer getOffer() {
+		return offer;
+	}
+
+	public void setOffer(Integer offer) {
+		this.offer = offer;
+	}
 
 	public Double getRating() {
 		return rating;
@@ -211,6 +225,14 @@ public class Product {
 
 	public void setBestSeller(Boolean bestSeller) {
 		this.bestSeller = bestSeller;
+	}
+	
+	public Integer getStock() {
+		return stock;
+	}
+
+	public void setStock(Integer stock) {
+		this.stock = stock;
 	}
 
 	public ProductType getProductType() {

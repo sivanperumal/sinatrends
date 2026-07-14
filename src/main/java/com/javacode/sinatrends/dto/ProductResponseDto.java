@@ -15,11 +15,13 @@ private Long id;
 	private String description;
 	private Double basePrice;
 	private Double salePrice;
+	private Integer offer;
 	private Double rating;
 	private Integer totalReviews;
 	private Boolean active;
 	private Boolean featured;
 	private Boolean bestSeller;
+	private Integer stock;
     private ProductType productType;
     private String categoryName;
     private List<String> collectionNames;
@@ -69,6 +71,13 @@ private Long id;
 	public void setSalePrice(Double salePrice) {
 		this.salePrice = salePrice;
 	}
+	
+	public Integer getOffer() {
+		return offer;
+	}
+	public void setOffer(Integer offer) {
+		this.offer = offer;
+	}
 	public Double getRating() {
 		return rating;
 	}
@@ -98,6 +107,13 @@ private Long id;
 	}
 	public void setBestSeller(Boolean bestSeller) {
 		this.bestSeller = bestSeller;
+	}
+	
+	public Integer getStock() {
+		return stock;
+	}
+	public void setStock(Integer stock) {
+		this.stock = stock;
 	}
 	public ProductType getProductType() {
 		return productType;

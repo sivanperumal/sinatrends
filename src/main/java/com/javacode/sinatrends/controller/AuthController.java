@@ -56,7 +56,7 @@ public class AuthController {
 		String email = (String)request.get("email");
 		String password	= (String)request.get("password");
 		
-		int expiresInMins = request.get("expiresInMins") != null ?  (int)request.get("expiresInMins") : 60 ;
+		int expiresInMins = request.get("expiresInMins") != null ?  (int)request.get("expiresInMins") : 120 ;
 	    
 		try {
 			Users userItems = userRepo.findByEmail(email).orElseThrow(()-> new RuntimeException("User not found by this "+email));

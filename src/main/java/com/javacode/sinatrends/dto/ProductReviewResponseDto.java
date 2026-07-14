@@ -14,6 +14,10 @@ public class ProductReviewResponseDto {
 	
 	private Long productId;
 	
+	private Boolean isVerified;
+	
+	private Long userId;
+	
 	private LocalDateTime createdAt;
 	
 	private LocalDateTime updatedAt;
@@ -59,6 +63,22 @@ public class ProductReviewResponseDto {
 	}
 	
 	
+	public Boolean getIsVerified() {
+		return isVerified;
+	}
+
+	public void setIsVerified(Boolean isVerified) {
+		this.isVerified = isVerified;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}

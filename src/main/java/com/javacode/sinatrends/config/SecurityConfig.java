@@ -33,6 +33,13 @@ public class SecurityConfig {
 				 .requestMatchers("/api/me").authenticated()
 				 .requestMatchers("/auth/login").permitAll()
 				 .requestMatchers("/auth/refresh").permitAll()
+				 .requestMatchers(HttpMethod.GET, "/api/category/**").permitAll()
+				 .requestMatchers("/api/products/**").permitAll()
+				 .requestMatchers("/products/**").permitAll()
+				 .requestMatchers("/api/collections/**").permitAll()
+				 .requestMatchers("/api/collections/**").permitAll()
+				 .requestMatchers("/api/test/**").permitAll()
+				 .requestMatchers("/api/category").authenticated()
 				 .anyRequest().authenticated();
 		    })
 			.cors(Customizer.withDefaults())

@@ -16,6 +16,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 public class Users {
@@ -29,6 +30,11 @@ public class Users {
 	@Column(nullable = false)
 	@NotBlank(message="Email Field is required")
 	private String email;
+	
+	@NotBlank(message = "Mobile number is required")
+	@Column(name = "mobile_no", unique = true, length = 10, nullable = false)
+	@Pattern(regexp = "^[6-9]\\d{9}$", message = "Mobile number must be exactly 10 digits and start with 6, 7, 8, or 9")
+	private String mobileNo;
 	
 	@Column(nullable = false)
 	@NotBlank(message="Password Field is required")
@@ -68,7 +74,7 @@ public class Users {
 	 }
 
 	 public Users(Long id, String firstname, String lastname,
-			@NotBlank(message = "Email Field is required") String email,
+			@NotBlank(message = "Email Field is required") String email, String mobileNo,
 			@NotBlank(message = "Password Field is required") String password, List<UserAddress> address,
 			LocalDate createdDate, LocalDate updatedDate, LocalTime createdBy, LocalTime updatedBy) {
 		super();
@@ -76,6 +82,7 @@ public class Users {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
+		this.mobileNo = mobileNo;
 		this.password = password;
 		this.address = address;
 		this.createdDate = createdDate;
@@ -114,6 +121,14 @@ public class Users {
 
 	 public void setEmail(String email) {
 		 this.email = email;
+	 }
+
+	 public String getMobileNo() {
+		return mobileNo;
+	}
+
+	 public void setMobileNo(String mobileNo) {
+		 this.mobileNo = mobileNo;
 	 }
 
 	 public String getPassword() {

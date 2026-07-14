@@ -21,6 +21,7 @@ public class UserMapper {
 		user.setFirstname(Dto.getFirstname());
 		user.setLastname(Dto.getLastname());
 		user.setEmail(Dto.getEmail());
+		user.setMobileNo(Dto.getMobileNo());
 		user.setPassword(Dto.getPassword());
 //		List<UserAddress> userAddress = Dto.getAddress().stream().map(addressDto -> {
 //			UserAddress addressRes = userAddressMapper.toAddressEntity(addressDto);
@@ -40,6 +41,7 @@ public class UserMapper {
 		Dto.setFirstname(user.getFirstname());
 		Dto.setLastname(user.getLastname());
 		Dto.setEmail(user.getEmail());
+		Dto.setMobileNo(user.getMobileNo());
 		Dto.setPassword(user.getPassword());
 		
 		List<UserAddressDto> userAddressDto = user.getAddress().stream().map(address->{

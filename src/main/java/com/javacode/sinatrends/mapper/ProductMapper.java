@@ -1,6 +1,6 @@
 package com.javacode.sinatrends.mapper;
 
-import java.util.List;import java.util.stream.Collector;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
@@ -24,11 +24,13 @@ public class ProductMapper {
 		dto.setDescription(product.getDescription());
 		dto.setBasePrice(product.getBasePrice());
 		dto.setSalePrice(product.getSalePrice());
+		dto.setOffer(product.getOffer());
 		dto.setRating(product.getRating());
 		dto.setTotalReviews(product.getTotalReviews());
 		dto.setActive(product.getActive());
 		dto.setFeatured(product.getFeatured());
 		dto.setBestSeller(product.getBestSeller());
+		dto.setStock(product.getStock());
 		dto.setProductType(product.getProductType());
 		dto.setCategoryName(product.getCategory().getName());
 		
@@ -51,6 +53,8 @@ public class ProductMapper {
 			reviewDto.setComment(review.getComment());
 			reviewDto.setRating(review.getRating());
 			reviewDto.setProductId(review.getProduct().getId());
+			reviewDto.setUserId(review.getUsers().getId());
+			reviewDto.setIsVerified(review.getIsVerified());
 			reviewDto.setCreatedAt(review.getCreatedAt());
 			reviewDto.setUpdatedAt(review.getUpdatedAt());
 			return reviewDto;
@@ -71,6 +75,7 @@ public class ProductMapper {
 		}).collect(Collectors.toList());
 		
 		dto.setCollectionNames(collectionNames);
+		dto.setImages(imageDtos);
 		dto.setReviews(reviewDtos);
 		dto.setVariants(variantDtos);
 		

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javacode.sinatrends.dto.CollectionResponseDto;
@@ -68,9 +69,9 @@ public class CategoryController {
 	}
 	
 	@GetMapping("/{catergory_slug}/collections")
-	public ResponseEntity<?> getCollectionsByCategory(@PathVariable String catergory_slug) {
+	public ResponseEntity<?> getCollectionsByCategory(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "8") int size, @PathVariable String catergory_slug) {
 		try {
-			List<CollectionResponseDto> collections = collectionService.getCollectionByCategorySlug(catergory_slug);
+			List<CollectionResponseDto> collections = collectionService.getCollectionByCategorySlug(page,size,catergory_slug);
 			return ResponseEntity.ok().body(collections);
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -7,7 +7,11 @@ public class CreateProductReviewDto {
 	
 	private Double rating;
 	
+	private Boolean isVerified;
+	
 	private Long productId;
+	
+	private Long userId;
 
 	public String getCustomerName() {
 		return customerName;
@@ -39,6 +43,22 @@ public class CreateProductReviewDto {
 
 	public void setProductId(Long productId) {
 		this.productId = productId;
+	}
+
+	public Boolean getIsVerified() {
+		return isVerified;
+	}
+
+	public void setIsVerified(Boolean isVerified) {
+		this.isVerified = isVerified;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	
 	
