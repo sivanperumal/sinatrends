@@ -32,6 +32,8 @@ public class SecurityConfig {
 				 .requestMatchers("/api/users").authenticated()
 				 .requestMatchers("/api/me").authenticated()
 				 .requestMatchers("/auth/login").permitAll()
+				 .requestMatchers("/auth/request-otp").permitAll()
+				 .requestMatchers("/auth/verify-otp").permitAll()
 				 .requestMatchers("/auth/refresh").permitAll()
 				 .requestMatchers(HttpMethod.GET, "/api/category/**").permitAll()
 				 .requestMatchers("/api/products/**").permitAll()

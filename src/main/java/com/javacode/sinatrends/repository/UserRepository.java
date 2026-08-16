@@ -8,4 +8,6 @@ import com.javacode.sinatrends.entity.Users;
 
 public interface UserRepository extends JpaRepository<Users, Long>{
      Optional<Users> findByEmail(String email);
+     Boolean existsByEmail(String email);
+     Boolean existsByMobileNo(String mobileNo);
 }

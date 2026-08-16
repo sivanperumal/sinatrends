@@ -1,5 +1,8 @@
 package com.javacode.sinatrends.mapper;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.javacode.sinatrends.dto.UserAddressDto;
+import com.javacode.sinatrends.dto.UserRequest;
 import com.javacode.sinatrends.dto.UserResponseDto;
 import com.javacode.sinatrends.entity.UserAddress;
 import com.javacode.sinatrends.entity.Users;
@@ -56,5 +60,17 @@ public class UserMapper {
 	    Dto.setUpdatedDate(user.getUpdatedDate());
 	    Dto.setUpdatedBy(user.getUpdatedBy());
 		return Dto;
+	}
+	
+	
+	public Users toEntityByEmail(String email) {
+		Users user = new Users();
+		
+		user.setEmail(email);
+		user.setCreatedDate(LocalDate.now());
+		user.setUpdatedDate(LocalDate.now());
+		user.setCreatedBy(LocalTime.now());
+		user.setUpdatedBy(LocalTime.now());
+		return user;
 	}
 }

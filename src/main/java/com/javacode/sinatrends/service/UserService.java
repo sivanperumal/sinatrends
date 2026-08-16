@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javacode.sinatrends.dto.UserAddressDto;
+import com.javacode.sinatrends.dto.UserRequest;
 import com.javacode.sinatrends.dto.UserResponseDto;
 import com.javacode.sinatrends.dto.UserUpdated;
 import com.javacode.sinatrends.entity.UserAddress;
@@ -30,7 +31,27 @@ public class UserService {
 	@Autowired
 	private UserAddressMapper userAddressMapper;
 	
+	public UserResponseDto createUserByEmail(String email) {
+		Boolean existsEmail = userRepository.existsByEmail(email);
+		if(existsEmail) {
+			throw new RuntimeException("Given Email already registered");
+		}
+		Users user = userRepository.save(userMapper.toEntityByEmail(email));
+		UserResponseDto dtoResponse = userMapper.toResponseDto(user);
+		return dtoResponse;
+	}
+	
 	public UserResponseDto createUser(UserResponseDto userDto) {
+		Boolean existsEmail = userRepository.existsByEmail(userDto.getEmail());
+		Boolean existsMobile = userRepository.existsByMobileNo(userDto.getMobileNo());
+		
+		if(existsEmail) {
+			throw new RuntimeException("Given Email already registered");
+		}
+		if(existsMobile) {
+			throw new RuntimeException("Given Mobile no already registered");
+		}
+		
 		Users user = userRepository.save(userMapper.toEntity(userDto));
 		UserResponseDto dtoResponse = userMapper.toResponseDto(user);
 		return dtoResponse;

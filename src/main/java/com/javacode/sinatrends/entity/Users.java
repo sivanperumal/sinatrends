@@ -31,13 +31,13 @@ public class Users {
 	@NotBlank(message="Email Field is required")
 	private String email;
 	
-	@NotBlank(message = "Mobile number is required")
-	@Column(name = "mobile_no", unique = true, length = 10, nullable = false)
+//	@NotBlank(message = "Mobile number is required")
+	@Column(name = "mobile_no", unique = true, length = 10, nullable = true)
 	@Pattern(regexp = "^[6-9]\\d{9}$", message = "Mobile number must be exactly 10 digits and start with 6, 7, 8, or 9")
 	private String mobileNo;
 	
-	@Column(nullable = false)
-	@NotBlank(message="Password Field is required")
+//	@Column(nullable = false)
+//	@NotBlank(message="Password Field is required")
 	private String password;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
